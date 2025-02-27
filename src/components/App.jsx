@@ -23,28 +23,24 @@ function App() {
       });
   }, []);
 
-  currencies.map((currency) => {
-    console.log(currency);
-  });
-
   return (
     <div className="flex items-center justify-center flex-col mt-10 gap-10 ">
       <Header />
 
-      <div className="text-white flex   flex-col header-font">
+      <table className="text-white font-[Jetbrains_Mono] w-[90vw] text-center rounded-lg">
         <CurrencyDescription />
         {currencies.map((currency) => (
           <Currencies
             currencyimage={currency.image}
             currencyname={currency.name}
-            symbol={currency.symbol}
+            symbol={currency.symbol.toUpperCase()}
             currentPrice={currency.current_price}
             change={currency.ath_change_percentage}
             volume={currency.total_volume}
             supply={currency.total_supply}
           />
         ))}
-      </div>
+      </table>
     </div>
   );
 }

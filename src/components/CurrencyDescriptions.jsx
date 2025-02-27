@@ -2,14 +2,16 @@ import React from "react";
 
 function CurrencyDescriptions() {
   return (
-    <div className="flex mt-4 justify-between  items-center bg-black/60 p-8 rounded w-[90vw]">
-      <h1>Name</h1>
-      <h1>Symbol</h1>
-      <h1>Price</h1>
-      <h1>24h Change</h1>
-      <h1>24h Volume</h1>
-      <h1>Market Cap</h1>
-    </div>
+    <thead className="border-2 border-black border-l-0 border-r-0 border-t-0">
+      <tr>
+        <th className="p-3  ">Name</th>
+        <th className="p-3 ">Symbol</th>
+        <th className="p-3 ">Price</th>
+        <th className="p-3 ">24h Change</th>
+        <th className="p-3 ">24h Volume</th>
+        <th className="p-3 ">Market Cap</th>
+      </tr>
+    </thead>
   );
 }
 

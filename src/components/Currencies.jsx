@@ -10,18 +10,29 @@ function Currencies({
   supply,
 }) {
   return (
-    <div className="flex mt-4 justify-between  items-center bg-black/60 p-8 rounded w-[90vw]">
-      <span className="flex items-center gap-[10px] coin">
-        <img src={currencyimage} alt="coin-image" />
-        <h2>{currencyname}</h2>
-      </span>
-
-      <h2>{symbol}</h2>
-      <h2>${currentPrice}</h2>
-      <h2>${change}</h2>
-      <h2>${volume}</h2>
-      <h2>{supply}</h2>
-    </div>
+    <tbody className="">
+      <tr>
+        <td className=" p-8 coin flex items-center gap-[20px] border-2 border-black border-l-0 border-r-0 border-t-0 ">
+          <img src={currencyimage} alt="" />
+          {currencyname}
+        </td>
+        <td className="p-8 border-2 border-black border-l-0 border-r-0 border-t-0">
+          {symbol}
+        </td>
+        <td className=" p-8 border-2 border-black border-l-0 border-r-0 border-t-0">
+          ${currentPrice}
+        </td>
+        <td className=" p-8 border-2 border-black border-l-0 border-r-0 border-t-0">
+          ${change}
+        </td>
+        <td className=" p-8 border-2 border-black border-l-0 border-r-0 border-t-0">
+          ${volume}
+        </td>
+        <td className=" p- border-2 border-black border-l-0 border-r-0 border-t-0">
+          ${supply}
+        </td>
+      </tr>
+    </tbody>
   );
 }
 
