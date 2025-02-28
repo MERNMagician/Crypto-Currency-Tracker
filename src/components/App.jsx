@@ -20,6 +20,7 @@ function App() {
       )
       .then((response) => {
         setCurrencies(response.data);
+        setCurrencyCopy(response.data);
       })
       .catch((error) => {
         console.log(error);
@@ -27,26 +28,19 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (currencyCopies) {
-      setCurrencyCopy("");
-    }
-    setCurrencyCopy([...currencies]);
-  }, [currencies]);
-
-  useEffect(() => {
+    console.log("Currency Copies");
     if (currencyCopies) {
       console.log(currencyCopies);
     }
   }, [currencyCopies]);
-
   useEffect(() => {
-    let filtered = [];
     if (currency) {
-      filtered = currencyCopies.filter((data) => {
-        data.name.includes(currency);
-      });
+      let filteredCurrencies = currencyCopies.filter((item) =>
+        item.name.includes(currency)
+      );
+
+      setCurrencies(filteredCurrencies);
     }
-    console.log(filtered);
   }, [currency]);
 
   const handleChange = (event) => {
