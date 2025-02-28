@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-function Searchbar() {
+function Searchbar({ onChange }) {
   return (
     <div>
       <input
         type="text"
         placeholder="Search Crypto"
-        className="placeholder:text-white h-14 bg-linear-to-r from-cyan-500 to-blue-500 w-[450px] p-8 rounded-lg header-font placeholder:opacity-70 text-white outline-0 border-0 text-[20px]"
+        className="placeholder:text-white h-14 bg-black border-2 border-white w-[70vw] p-8 rounded-lg font-[Jetbrains_Mono] placeholder:opacity-70 text-white 0 text-[15px]"
+        id="search"
+        onChange={onChange}
       />
     </div>
   );

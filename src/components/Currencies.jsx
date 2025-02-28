@@ -1,35 +1,30 @@
 import React from "react";
 
-function Currencies({
-  currencyimage,
-  currencyname,
-  symbol,
-  currentPrice,
-  change,
-  volume,
-  supply,
-}) {
+function Currencies({ image, name, symbol, price, change, marketCap }) {
   return (
-    <tbody className="">
-      <tr>
-        <td className=" p-8 coin flex items-center gap-[20px] border-2 border-black border-l-0 border-r-0 border-t-0 ">
-          <img src={currencyimage} alt="" />
-          {currencyname}
+    <tbody>
+      <tr className="text-center bg-gray-800 border-2 border-white border-t-0 border-l-0 border-r-0 hover:bg-black cursor-pointer">
+        <td className="coin ">
+          <div className=" p-5 flex gap-[10px]  flex-col items-center">
+            <img src={image} alt="" className="" />
+            <div className=" flex  flex-col text-center ">
+              <p>{symbol}</p>
+              <p className="text-[13px] opacity-60">{name}</p>
+            </div>
+          </div>
         </td>
-        <td className="p-8 border-2 border-black border-l-0 border-r-0 border-t-0">
-          {symbol}
+        <td>
+          <p>${price}</p>
         </td>
-        <td className=" p-8 border-2 border-black border-l-0 border-r-0 border-t-0">
-          ${currentPrice}
+        <td>
+          {String(change).includes("-") ? (
+            <p className="text-red-700">{change}%</p>
+          ) : (
+            <p className="text-green-400">+{change}%</p>
+          )}
         </td>
-        <td className=" p-8 border-2 border-black border-l-0 border-r-0 border-t-0">
-          ${change}
-        </td>
-        <td className=" p-8 border-2 border-black border-l-0 border-r-0 border-t-0">
-          ${volume}
-        </td>
-        <td className=" p- border-2 border-black border-l-0 border-r-0 border-t-0">
-          ${supply}
+        <td>
+          <p>${marketCap}</p>
         </td>
       </tr>
     </tbody>
