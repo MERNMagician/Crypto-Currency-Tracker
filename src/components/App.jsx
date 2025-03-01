@@ -2,11 +2,11 @@ import React from "react";
 import Header from "../components/Header";
 import Searchbar from "./Searchbar";
 import CurrencyDescription from "./CurrencyDescriptions";
-
 import Currencies from "./Currencies";
 import { useEffect, useState, useMemo, useRef } from "react";
 import axios from "axios";
 import "../assets/css/coinsize.css";
+import Navbar from "./Navbar";
 
 function App() {
   const [currencies, setCurrencies] = useState([]);
@@ -28,27 +28,39 @@ function App() {
   }, []);
 
   useEffect(() => {
-    console.log("Currency Copies");
-    if (currencyCopies) {
-      console.log(currencyCopies);
-    }
-  }, [currencyCopies]);
-  useEffect(() => {
     if (currency) {
-      let filteredCurrencies = currencyCopies.filter((item) =>
-        item.name.includes(currency)
-      );
-
+      const filteredCurrencies = currencyCopies.filter(findDesiredCurrency);
       setCurrencies(filteredCurrencies);
     }
   }, [currency]);
 
   const handleChange = (event) => {
-    findCurrency(event.target.value);
+    if (event) {
+      findCurrency(event.target.value);
+    }
+  };
+
+  useEffect(() => {
+    if (currencies) {
+      const sort = currencies.sort((a, b) => {
+        return b.current_price - a.current_price;
+      });
+
+      setCurrencies(sort);
+    }
+  }, [currencies]);
+
+  const findDesiredCurrency = (item) => {
+    if (item) {
+      if (item.name.toLowerCase().includes(currency.toLowerCase())) {
+        return item;
+      }
+    }
   };
 
   return (
-    <div className="flex items-center justify-center flex-col mt-10 gap-10 ">
+    <div className="flex items-center justify-center flex-col  gap-10 ">
+      <Navbar />
       <Header />
 
       {/*

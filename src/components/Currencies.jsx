@@ -30,5 +30,4 @@ function Currencies({ image, name, symbol, price, change, marketCap }) {
     </tbody>
   );
 }
-
 export default Currencies;
