@@ -3,10 +3,11 @@ import Header from "../components/Header";
 import Searchbar from "./Searchbar";
 import CurrencyDescription from "./CurrencyDescriptions";
 import Currencies from "./Currencies";
-import { useEffect, useState, useMemo, useRef } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import "../assets/css/coinsize.css";
 import Navbar from "./Navbar";
+import Swal from "sweetalert2";
 
 function App() {
   const [currencies, setCurrencies] = useState([]);
@@ -25,6 +26,12 @@ function App() {
       .catch((error) => {
         console.log(error);
       });
+
+    Swal.fire({
+      title: "Welcome",
+      text: "You can use the website to search and look for your currency",
+      icon: "info",
+    });
   }, []);
 
   useEffect(() => {
@@ -64,7 +71,7 @@ function App() {
       <Header />
 
       {/*
-       This component has an event and it is possible because of the passing of event by prop
+        This component has an event and it is possible because of the passing of event by prop
       */}
       <Searchbar onChange={handleChange} />
 
